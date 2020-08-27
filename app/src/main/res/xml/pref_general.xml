@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<CheckBoxPreference-->
+    <!--android:defaultValue="@bool/pref_show_most_popular_default"-->
+    <!--android:key="@string/pref_most_popular_key"-->
+    <!--android:summaryOff="@string/pref_show_false"-->
+    <!--android:summaryOn="@string/pref_show_true"-->
+    <!--android:title="@string/pref_most_popular_label" />-->
+
+    <!--<CheckBoxPreference-->
+    <!--android:defaultValue="@bool/pref_show_top_rated_default"-->
+    <!--android:key="@string/pref_top_rated_key"-->
+    <!--android:summaryOff="@string/pref_show_false"-->
+    <!--android:summaryOn="@string/pref_show_true"-->
+    <!--android:title="@string/pref_top_rated_label" />-->
+
+    <ListPreference
+        android:defaultValue="@string/pref_default"
+        android:entries="@array/pref_movie_options"
+        android:entryValues="@array/pref_movie_values"
+        android:key="@string/pref_movie_key"
+        android:title="@string/pref_movie_category_label" />
+</PreferenceScreen>
