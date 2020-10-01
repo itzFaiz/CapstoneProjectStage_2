@@ -41,10 +41,10 @@ public class FavouriteWidgetService extends RemoteViewsService {
             SharedPreferences sharedPreferences = mContext.getSharedPreferences(DetailActivity.PREF,Context.MODE_PRIVATE);
             movieId = sharedPreferences.getInt(DetailActivity.MOVIE_ID,0);
 
-            if (movieId != 0){
-                moviesList = database.taskDao().getSelectedMovies(movieId).getIsFavourite();
+//            if (movieId != 0){
+                database.taskDao().loadAllMoviesSync();
                 Log.d("", "onDataSetChanged: "+ moviesList.toString());
-            }
+//            }
 
         }
 
