@@ -57,8 +57,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
 
     @Override
     public int getItemCount() {
-        if (null == arrayList) return 0;
-        return arrayList.size();
+        return (arrayList == null)? 0 : arrayList.size();
     }
 
         public void setMovieData(ArrayList<Movies> movies) {

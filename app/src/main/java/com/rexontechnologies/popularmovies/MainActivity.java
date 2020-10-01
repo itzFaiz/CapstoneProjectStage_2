@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Lis
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("results");
-                    for (int i = 0; i < 20; i++) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                         Movies movies = new Movies();
                         movies.setMovieId(jsonObject1.optString("id", "Not Available"));
@@ -126,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Lis
                         movies.setPlot(jsonObject1.optString("overview", "Not Available"));
 
                         arrayList.add(movies);
+                        Log.d(TAG, "onResponse: Number of movies");
                     }
                     if (moviesAdapter != null) {
                         showMoviesDataView();
@@ -165,11 +166,11 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Lis
     public void onListItemClick(final int clickedItemIndex) {
         Intent intent = new Intent(MainActivity.this, DetailActivity.class);
         final LiveData<MovieEntry> task = mDb.taskDao().loadMovieByMovieId(arrayList.get(clickedItemIndex).getMovieId());
-        // COMPLETED (4) Observe tasks and move the logic from runOnUiThread to onChanged
+
         task.observe(this, new Observer<MovieEntry>() {
             @Override
             public void onChanged(@Nullable MovieEntry taskEntry) {
-                // COMPLETED (5) Remove the observer as we do not need it any more
+
                 task.removeObserver(this);
                 Log.d(TAG, "Receiving database update from LiveData");
                 if (task == null) {

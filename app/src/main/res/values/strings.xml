@@ -41,4 +41,13 @@
 
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="app_id">ca-app-pub-6290632578698269~8062776597</string>
+    <string name="enter_fullName">Full Name</string>
+    <string name="create_account">Create New Account</string>
+    <string name="enter_email">Email</string>
+    <string name="enter_password">Password</string>
+    <string name="sign_up">Register</string>
+    <string name="already_account">Already have an account?</string>
+    <string name="login">Login</string>
+    <string name="new_user">New User?</string>
+    <string name="enter_mobile">Mobile</string>
 </resources>

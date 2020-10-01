@@ -3,10 +3,14 @@ package com.rexontechnologies.popularmovies;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
 import com.rexontechnologies.popularmovies.data.AppDatabase;
+import com.rexontechnologies.popularmovies.utils.Movies;
+
+import java.util.List;
 
 public class FavouriteWidgetService extends RemoteViewsService {
 
@@ -18,12 +22,12 @@ public class FavouriteWidgetService extends RemoteViewsService {
     }
 
     private class FavouriteRemoteViewFactory implements RemoteViewsFactory {
-        Context mcontext;
-        String isFavourite;
+        Context mContext;
         private int movieId;
+        List<Movies>  moviesList;
 
         FavouriteRemoteViewFactory(Context applicationContext) {
-            mcontext = getApplicationContext();
+            mContext = getApplicationContext();
             database = AppDatabase.getInstance(getApplicationContext());
         }
 
@@ -34,8 +38,13 @@ public class FavouriteWidgetService extends RemoteViewsService {
 
         @Override
         public void onDataSetChanged() {
-            SharedPreferences sharedPreferences = mcontext.getSharedPreferences(DetailActivity.PREF,Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences = mContext.getSharedPreferences(DetailActivity.PREF,Context.MODE_PRIVATE);
             movieId = sharedPreferences.getInt(DetailActivity.MOVIE_ID,0);
+
+            if (movieId != 0){
+                moviesList = database.taskDao().getSelectedMovies(movieId).getIsFavourite();
+                Log.d("", "onDataSetChanged: "+ moviesList.toString());
+            }
 
         }
 
@@ -47,12 +56,17 @@ public class FavouriteWidgetService extends RemoteViewsService {
 
         @Override
         public int getCount() {
-            return 0;
+            return moviesList == null ? 0 : moviesList.size();
         }
 
         @Override
         public RemoteViews getViewAt(int i) {
-            return null;
+            RemoteViews views = new RemoteViews(mContext.getPackageName(),R.layout.list_item_widget);
+            Movies movies = moviesList.get(i);
+            String movieName = String.valueOf(movies.getMovieName());
+            String isFavourite = movies.getIsFavourite();
+            views.setTextViewText(R.id.appwidget_favorite,isFavourite + " " + movieName);
+            return views;
         }
 
         @Override
@@ -62,7 +76,7 @@ public class FavouriteWidgetService extends RemoteViewsService {
 
         @Override
         public int getViewTypeCount() {
-            return 0;
+            return 1;
         }
 
         @Override
