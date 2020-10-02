@@ -43,7 +43,7 @@ public class FavouriteWidgetService extends RemoteViewsService {
 
 //            if (movieId != 0){
                 database.taskDao().loadAllMoviesSync();
-                Log.d("", "onDataSetChanged: "+ moviesList.toString());
+//                Log.d("", "onDataSetChanged: "+ moviesList.toString());
 //            }
 
         }
