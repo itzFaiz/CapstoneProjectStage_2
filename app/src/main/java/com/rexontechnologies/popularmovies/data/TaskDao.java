@@ -17,7 +17,7 @@ public interface TaskDao {
     LiveData<List<MovieEntry>> loadAllMovies();
 
     @Query("Select * From  favourite ORDER BY movieId")
-    LiveData<MovieEntry> loadAllMoviesSync();
+    List<MovieEntry> loadAllMoviesSync();
 
     @Insert
     void insertMovie(MovieEntry movieEntry);
