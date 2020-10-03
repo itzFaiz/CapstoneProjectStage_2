@@ -218,9 +218,16 @@ public class DetailActivity extends AppCompatActivity {
                 public void run() {
                     database.taskDao().insertMovie(movieEntry);
 
+
                 }
             });
             ib_favourite.setImageResource(R.drawable.ic_fav_red);
+            SharedPreferences sharedPreferences = getSharedPreferences(PREF,0);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt(MOVIE_ID,Integer.parseInt(movies.getMovieId()));
+            editor.putString(MOVIE_NAME,movies.getMovieName());
+            editor.commit();
+            FavouriteWidget.updateWidget(this);
         } else {
             //Delete Code
             AddMovieViewModelFactory factory = new AddMovieViewModelFactory(database, movies.getMovieId());

@@ -29,11 +29,11 @@ public class FavouriteWidget extends AppWidgetProvider {
         views.setRemoteAdapter(R.id.appwidget_list,intent);
         views.setEmptyView(R.id.appwidget_list,R.id.appwidget_empty);
 
-        Intent i = new Intent(context, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, i, 0);
-        views.setOnClickPendingIntent(R.id.appwidget_text, pendingIntent);
-        // Instruct the widget manager to update the widget
-        appWidgetManager.updateAppWidget(appWidgetId, views);
+            Intent i = new Intent(context, MainActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, i, 0);
+            views.setOnClickPendingIntent(R.id.appwidget_text, pendingIntent);
+            // Instruct the widget manager to update the widget
+            appWidgetManager.updateAppWidget(appWidgetId, views);
         appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.appwidget_list);
     }
     public static void updateWidget(Context context) {

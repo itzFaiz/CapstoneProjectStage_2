@@ -81,7 +81,7 @@ public class FavouriteWidgetService extends RemoteViewsService {
 
         @Override
         public long getItemId(int i) {
-            return 0;
+            return 1;
         }
 
         @Override
