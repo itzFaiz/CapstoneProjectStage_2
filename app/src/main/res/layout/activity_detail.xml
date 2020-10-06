@@ -38,8 +38,8 @@
                 android:contentDescription="ABC"
                 android:scaleType="fitXY"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginBottom="20dp"
                 android:src="@drawable/ic_menu_camera" />
 
@@ -62,8 +62,8 @@
                     android:id="@+id/tv_movie_rating"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:gravity="left"
+                    android:layout_gravity="start"
+                    android:gravity="start"
                     android:text="@string/detail_rating"
                     android:textSize="15sp"
                     android:textStyle="bold" />

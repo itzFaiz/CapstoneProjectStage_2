@@ -8,6 +8,7 @@ import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
 import com.rexontechnologies.popularmovies.data.AppDatabase;
+import com.rexontechnologies.popularmovies.data.MovieEntry;
 import com.rexontechnologies.popularmovies.utils.Movies;
 
 import java.util.List;
@@ -24,12 +25,13 @@ public class FavouriteWidgetService extends RemoteViewsService {
     private class FavouriteRemoteViewFactory implements RemoteViewsFactory {
         Context mContext;
         private int movieId;
-        List<Movies>  moviesList;
+        List<MovieEntry>  moviesList;
 
         FavouriteRemoteViewFactory(Context applicationContext) {
             mContext = getApplicationContext();
             database = AppDatabase.getInstance(getApplicationContext());
         }
+
 
         @Override
         public void onCreate() {
@@ -41,11 +43,7 @@ public class FavouriteWidgetService extends RemoteViewsService {
             SharedPreferences sharedPreferences = mContext.getSharedPreferences(DetailActivity.PREF,Context.MODE_PRIVATE);
             movieId = sharedPreferences.getInt(DetailActivity.MOVIE_ID,0);
 
-//            if (movieId != 0){
-                database.taskDao().loadAllMoviesSync();
-//                Log.d("", "onDataSetChanged: "+ moviesList.toString());
-//            }
-
+            moviesList = database.taskDao().loadAllMoviesSync();
         }
 
 
@@ -62,10 +60,9 @@ public class FavouriteWidgetService extends RemoteViewsService {
         @Override
         public RemoteViews getViewAt(int i) {
             RemoteViews views = new RemoteViews(mContext.getPackageName(),R.layout.list_item_widget);
-            Movies movies = moviesList.get(i);
+            MovieEntry movies = moviesList.get(i);
             String movieName = String.valueOf(movies.getMovieName());
-            String isFavourite = movies.getIsFavourite();
-            views.setTextViewText(R.id.appwidget_favorite,isFavourite + " " + movieName);
+            views.setTextViewText(R.id.appwidget_favorite, movieName);
             return views;
         }
 

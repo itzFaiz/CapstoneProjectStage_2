@@ -18,8 +18,8 @@
         android:id="@+id/tv_reviews_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginLeft="20dp"
+        android:layout_gravity="start"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:text="Author"
         android:textSize="20dp" />
@@ -37,8 +37,8 @@
         android:id="@+id/tv_reviews_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginLeft="20dp"
+        android:layout_gravity="start"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:text="Content"
         android:textSize="20dp" />

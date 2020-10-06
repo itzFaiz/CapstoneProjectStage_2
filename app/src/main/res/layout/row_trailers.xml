@@ -13,15 +13,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
-        android:gravity="center_horizontal|left">
+        android:gravity="center_horizontal|start">
 
         <ImageView
             android:id="@+id/iv_trailer"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_margin = "10dp"
             android:src="@drawable/play" />
         

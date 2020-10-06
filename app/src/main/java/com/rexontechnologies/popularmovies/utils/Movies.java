@@ -4,6 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Movies implements Parcelable {
 
     private String movieId;
@@ -22,6 +25,7 @@ public class Movies implements Parcelable {
         ratings = in.readString();
         plot = in.readString();
         isFavourite = in.readString();
+
     }
 
     public Movies(){
@@ -96,6 +100,10 @@ public class Movies implements Parcelable {
         this.isFavourite = isFavourite;
     }
 
+
+
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -110,6 +118,7 @@ public class Movies implements Parcelable {
         parcel.writeString(ratings);
         parcel.writeString(plot);
         parcel.writeString(isFavourite);
+
     }
 }
 
